@@ -2449,20 +2449,22 @@ html.dark {
 body {
 	background-color: var(--mihn-paper) !important;
 	background-image:
+		repeating-linear-gradient(135deg, rgba(17, 17, 17, 0.12) 0 1px, transparent 1px 10px),
 		radial-gradient(circle at 12px 12px, rgba(17, 17, 17, 0.14) 1.2px, transparent 1.4px),
 		linear-gradient(135deg, rgba(0, 216, 255, 0.16), transparent 35%),
 		linear-gradient(315deg, rgba(255, 47, 146, 0.13), transparent 42%);
-	background-size: 18px 18px, 100% 100%, 100% 100%;
+	background-size: 24px 24px, 18px 18px, 100% 100%, 100% 100%;
 	color: var(--mihn-ink) !important;
 }
 
 html.dark body {
 	background-image:
 		linear-gradient(rgba(255, 255, 255, 0.035) 50%, transparent 50%),
+		repeating-linear-gradient(135deg, rgba(255, 217, 0, 0.1) 0 1px, transparent 1px 10px),
 		radial-gradient(circle at 12px 12px, rgba(255, 217, 0, 0.16) 1px, transparent 1.4px),
 		linear-gradient(135deg, rgba(0, 216, 255, 0.14), transparent 35%),
 		linear-gradient(315deg, rgba(255, 47, 146, 0.13), transparent 42%);
-	background-size: 100% 4px, 18px 18px, 100% 100%, 100% 100%;
+	background-size: 100% 4px, 24px 24px, 18px 18px, 100% 100%, 100% 100%;
 }
 
 body::before,
@@ -2476,15 +2478,43 @@ body::after {
 
 body::before {
 	background:
-		repeating-linear-gradient(135deg, rgba(17, 17, 17, 0.22) 0 1px, transparent 1px 8px),
-		repeating-linear-gradient(135deg, rgba(255, 217, 0, 0.24) 0 1px, transparent 1px 13px),
-		radial-gradient(ellipse at 18% 48%, rgba(255, 217, 0, 0.26) 0 8%, transparent 38%),
-		radial-gradient(ellipse at 80% 54%, rgba(0, 216, 255, 0.2) 0 7%, transparent 34%);
-	background-size: 17px 17px, 31px 31px, 132% 94%, 148% 96%;
-	opacity: 0.28;
+		repeating-linear-gradient(135deg, rgba(17, 17, 17, 0.26) 0 1px, transparent 1px 5px),
+		repeating-linear-gradient(135deg, rgba(255, 217, 0, 0.2) 0 1px, transparent 1px 7px);
+	background-size: 13px 13px, 19px 19px;
+	opacity: 0.32;
 	mix-blend-mode: multiply;
-	animation: mihn-stripe-wave 8s ease-in-out infinite alternate;
-	will-change: background-position, background-size, transform;
+	-webkit-mask-image: linear-gradient(
+		102deg,
+		transparent 0%,
+		rgba(0, 0, 0, 0.18) 10%,
+		rgba(0, 0, 0, 0.9) 18%,
+		rgba(0, 0, 0, 0.12) 30%,
+		transparent 42%,
+		rgba(0, 0, 0, 0.72) 55%,
+		rgba(0, 0, 0, 0.2) 68%,
+		transparent 82%,
+		rgba(0, 0, 0, 0.82) 94%,
+		transparent 100%
+	);
+	mask-image: linear-gradient(
+		102deg,
+		transparent 0%,
+		rgba(0, 0, 0, 0.18) 10%,
+		rgba(0, 0, 0, 0.9) 18%,
+		rgba(0, 0, 0, 0.12) 30%,
+		transparent 42%,
+		rgba(0, 0, 0, 0.72) 55%,
+		rgba(0, 0, 0, 0.2) 68%,
+		transparent 82%,
+		rgba(0, 0, 0, 0.82) 94%,
+		transparent 100%
+	);
+	-webkit-mask-repeat: repeat;
+	mask-repeat: repeat;
+	-webkit-mask-size: 170% 100%;
+	mask-size: 170% 100%;
+	animation: mihn-density-wave 7.5s ease-in-out infinite alternate;
+	will-change: -webkit-mask-position, mask-position, -webkit-mask-size, mask-size, opacity;
 }
 
 html.dark body::before {
@@ -2972,21 +3002,27 @@ html.dark .post-broadcast-card p {
 	}
 }
 
-@keyframes mihn-stripe-wave {
+@keyframes mihn-density-wave {
 	0% {
-		background-position: 0 0, 0 0, 0% 48%, 100% 52%;
-		background-size: 20px 20px, 38px 38px, 128% 92%, 150% 96%;
-		transform: translate3d(-0.4%, -0.15%, 0) skewY(-0.24deg) scale(1.012);
+		-webkit-mask-position: 0% 0;
+		mask-position: 0% 0;
+		-webkit-mask-size: 185% 100%;
+		mask-size: 185% 100%;
+		opacity: 0.24;
 	}
 	45% {
-		background-position: 18px 8px, -12px 6px, 42% 46%, 58% 54%;
-		background-size: 13px 13px, 24px 24px, 146% 86%, 136% 90%;
-		transform: translate3d(0.35%, 0.2%, 0) skewY(0.22deg) scale(1.016);
+		-webkit-mask-position: 42% 0;
+		mask-position: 42% 0;
+		-webkit-mask-size: 128% 100%;
+		mask-size: 128% 100%;
+		opacity: 0.38;
 	}
 	100% {
-		background-position: 36px 18px, -28px 14px, 96% 52%, 6% 50%;
-		background-size: 22px 22px, 34px 34px, 132% 94%, 156% 98%;
-		transform: translate3d(0.75%, -0.1%, 0) skewY(-0.18deg) scale(1.012);
+		-webkit-mask-position: 100% 0;
+		mask-position: 100% 0;
+		-webkit-mask-size: 172% 100%;
+		mask-size: 172% 100%;
+		opacity: 0.28;
 	}
 }
 
