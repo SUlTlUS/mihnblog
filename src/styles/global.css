@@ -1610,12 +1610,7 @@ html.theme-vt::view-transition-new(root) {
 	pointer-events: none;
 	opacity: 0;
 	transition: opacity 280ms ease;
-	background: radial-gradient(
-		320px circle at var(--spot-x, 50%) var(--spot-y, 50%),
-		rgba(37, 99, 235, 0.075),
-		rgba(37, 99, 235, 0.028) 42%,
-		transparent 72%
-	);
+	background: linear-gradient(135deg, rgba(37, 99, 235, 0.06), rgba(180, 126, 36, 0.025) 48%, transparent 78%);
 }
 
 /* The 1px border glow requires mask compositing; without it the overlay would
@@ -1630,12 +1625,7 @@ html.theme-vt::view-transition-new(root) {
 		pointer-events: none;
 		opacity: 0;
 		transition: opacity 280ms ease;
-		background: radial-gradient(
-			210px circle at var(--spot-x, 50%) var(--spot-y, 50%),
-			rgba(37, 99, 235, 0.5),
-			rgba(180, 126, 36, 0.22) 52%,
-			transparent 78%
-		);
+		background: linear-gradient(135deg, rgba(37, 99, 235, 0.45), rgba(180, 126, 36, 0.18) 52%, transparent 78%);
 		-webkit-mask:
 			linear-gradient(#fff 0 0) content-box,
 			linear-gradient(#fff 0 0);
@@ -1657,21 +1647,11 @@ html.theme-vt::view-transition-new(root) {
 }
 
 html.dark .card-spotlight::after {
-	background: radial-gradient(
-		320px circle at var(--spot-x, 50%) var(--spot-y, 50%),
-		rgba(96, 165, 250, 0.085),
-		rgba(96, 165, 250, 0.032) 42%,
-		transparent 72%
-	);
+	background: linear-gradient(135deg, rgba(96, 165, 250, 0.07), rgba(226, 190, 110, 0.028) 48%, transparent 78%);
 }
 
 html.dark .card-spotlight::before {
-	background: radial-gradient(
-		210px circle at var(--spot-x, 50%) var(--spot-y, 50%),
-		rgba(147, 197, 253, 0.55),
-		rgba(226, 190, 110, 0.26) 52%,
-		transparent 78%
-	);
+	background: linear-gradient(135deg, rgba(147, 197, 253, 0.48), rgba(226, 190, 110, 0.2) 52%, transparent 78%);
 }
 
 /* --- Scroll-triggered reveal (html.js-reveal is set by JS, so no-JS users see everything) --- */
@@ -2450,10 +2430,9 @@ body {
 	background-color: var(--mihn-paper) !important;
 	background-image:
 		repeating-linear-gradient(135deg, rgba(17, 17, 17, 0.12) 0 1px, transparent 1px 10px),
-		radial-gradient(circle at 12px 12px, rgba(17, 17, 17, 0.14) 1.2px, transparent 1.4px),
 		linear-gradient(135deg, rgba(0, 216, 255, 0.16), transparent 35%),
 		linear-gradient(315deg, rgba(255, 47, 146, 0.13), transparent 42%);
-	background-size: 24px 24px, 18px 18px, 100% 100%, 100% 100%;
+	background-size: 24px 24px, 100% 100%, 100% 100%;
 	color: var(--mihn-ink) !important;
 }
 
@@ -2461,10 +2440,9 @@ html.dark body {
 	background-image:
 		linear-gradient(rgba(255, 255, 255, 0.035) 50%, transparent 50%),
 		repeating-linear-gradient(135deg, rgba(255, 217, 0, 0.1) 0 1px, transparent 1px 10px),
-		radial-gradient(circle at 12px 12px, rgba(255, 217, 0, 0.16) 1px, transparent 1.4px),
 		linear-gradient(135deg, rgba(0, 216, 255, 0.14), transparent 35%),
 		linear-gradient(315deg, rgba(255, 47, 146, 0.13), transparent 42%);
-	background-size: 100% 4px, 24px 24px, 18px 18px, 100% 100%, 100% 100%;
+	background-size: 100% 4px, 24px 24px, 100% 100%, 100% 100%;
 }
 
 body::before,
@@ -2639,10 +2617,8 @@ body::after {
 	inset: 0;
 	z-index: 0;
 	pointer-events: none;
-	background:
-		radial-gradient(circle at 15% 20%, rgba(17, 17, 17, 0.16) 0 1.5px, transparent 1.8px),
-		linear-gradient(transparent 50%, rgba(17, 17, 17, 0.04) 50%);
-	background-size: 12px 12px, 100% 6px;
+	background: linear-gradient(transparent 50%, rgba(17, 17, 17, 0.04) 50%);
+	background-size: 100% 6px;
 	mix-blend-mode: multiply;
 	opacity: 0.55;
 }
@@ -2696,21 +2672,19 @@ html.dark .post-broadcast-card p {
 }
 
 .mihn-hero::before {
-	content: '';
+	content: none;
 	position: absolute;
 	inset: 0;
 	z-index: 2;
 	pointer-events: none;
-	background:
-		linear-gradient(transparent 52%, rgba(0, 0, 0, 0.22) 52%),
-		radial-gradient(circle at 16% 24%, rgba(255, 217, 0, 0.28) 0 1.8px, transparent 2px);
-	background-size: 100% 5px, 16px 16px;
+	background: linear-gradient(transparent 52%, rgba(0, 0, 0, 0.22) 52%);
+	background-size: 100% 5px;
 	mix-blend-mode: screen;
 	opacity: 0.72;
 }
 
 .mihn-hero::after {
-	content: 'CHANNEL 04 / SIGNAL MIHN / 129251743';
+	content: none;
 	position: absolute;
 	left: 0;
 	right: 0;
@@ -2722,6 +2696,33 @@ html.dark .post-broadcast-card p {
 	font: 900 0.78rem/2rem ui-monospace, SFMono-Regular, Menlo, monospace;
 	letter-spacing: 0.18em;
 	text-align: center;
+}
+
+.mihn-home-copy {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: end;
+	justify-content: space-between;
+	gap: 1rem;
+	border: 3px solid var(--mihn-line);
+	border-radius: 0.42rem;
+	background:
+		linear-gradient(135deg, color-mix(in srgb, var(--mihn-card) 88%, white 12%), color-mix(in srgb, var(--mihn-yellow) 14%, var(--mihn-card) 86%)),
+		var(--mihn-card);
+	box-shadow: var(--mihn-shadow);
+	padding: clamp(1rem, 3vw, 1.65rem);
+}
+
+.mihn-home-title {
+	color: var(--mihn-ink);
+	font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', 'Microsoft YaHei UI', sans-serif;
+	font-size: clamp(2.6rem, 9vw, 5.8rem);
+	font-weight: 900;
+	font-style: italic;
+	line-height: 0.82;
+	letter-spacing: 0;
+	text-transform: uppercase;
+	transform: skewX(-7deg);
 }
 
 .zzz-official-ribbon {
