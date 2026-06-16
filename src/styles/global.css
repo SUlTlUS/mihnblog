@@ -2653,7 +2653,10 @@ html.dark .post-broadcast-card p {
 	overflow: hidden;
 	border: 4px solid var(--mihn-line);
 	border-radius: 0.55rem;
-	background: #111;
+	background:
+		linear-gradient(122deg, #111 0 45%, transparent 45% 100%),
+		linear-gradient(128deg, var(--mihn-yellow) 0 7%, transparent 7% 13%, var(--mihn-cyan) 13% 18%, transparent 18% 100%),
+		#111;
 	box-shadow: var(--mihn-shadow);
 	isolation: isolate;
 }
@@ -2685,6 +2688,48 @@ html.dark .post-broadcast-card p {
 	font: 900 0.78rem/2rem ui-monospace, SFMono-Regular, Menlo, monospace;
 	letter-spacing: 0.18em;
 	text-align: center;
+}
+
+.zzz-official-ribbon {
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 6;
+	display: grid;
+	gap: 0.35rem;
+	width: min(20rem, 44%);
+	padding: 1rem 1rem 0 0;
+	justify-items: end;
+}
+
+.zzz-official-ribbon span {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 9rem;
+	border: 3px solid #111;
+	background: #111;
+	color: var(--mihn-yellow);
+	box-shadow: 4px 4px 0 var(--mihn-yellow);
+	padding: 0.36rem 0.65rem;
+	font: 900 0.72rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	transform: skewX(-12deg);
+}
+
+.zzz-official-ribbon span:nth-child(2) {
+	background: var(--mihn-yellow);
+	color: #111;
+	box-shadow: 4px 4px 0 #111;
+	transform: translateX(-1.2rem) skewX(-12deg);
+}
+
+.zzz-official-ribbon span:nth-child(3) {
+	background: var(--mihn-cyan);
+	color: #111;
+	box-shadow: 4px 4px 0 #111;
+	transform: translateX(-2.4rem) skewX(-12deg);
 }
 
 .mihn-hero-image {
@@ -2804,6 +2849,51 @@ html.dark .post-broadcast-card p {
 	background: var(--mihn-cyan);
 }
 
+.mihn-download-row {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.65rem;
+	margin-top: 1.35rem;
+}
+
+.mihn-cta {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 3rem;
+	min-width: 8.5rem;
+	border: 3px solid #111;
+	background: #fff8df;
+	color: #111;
+	box-shadow: 5px 5px 0 #111;
+	padding: 0.55rem 0.9rem;
+	font: 900 0.88rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+	letter-spacing: 0.08em;
+	text-decoration: none;
+	text-transform: uppercase;
+	transform: skewX(-8deg);
+	transition:
+		transform 180ms cubic-bezier(0.22, 1, 0.36, 1),
+		box-shadow 180ms ease,
+		background-color 180ms ease;
+}
+
+.mihn-cta:hover {
+	transform: translate(-2px, -2px) skewX(-8deg);
+	box-shadow: 8px 8px 0 #111;
+	background: var(--mihn-green);
+	color: #111;
+}
+
+.mihn-cta.primary {
+	background: var(--mihn-yellow);
+	min-width: 10rem;
+}
+
+.mihn-cta.cyan {
+	background: var(--mihn-cyan);
+}
+
 .mihn-section-title {
 	display: inline-flex;
 	align-items: center;
@@ -2894,8 +2984,23 @@ html.dark .post-broadcast-card p {
 		display: none;
 	}
 
+	.zzz-official-ribbon {
+		display: none;
+	}
+
 	.mihn-title {
 		font-size: clamp(3.2rem, 18vw, 5.4rem);
+	}
+
+	.mihn-download-row {
+		gap: 0.5rem;
+	}
+
+	.mihn-cta {
+		min-height: 2.65rem;
+		min-width: 0;
+		padding: 0.5rem 0.7rem;
+		font-size: 0.72rem;
 	}
 }
 
