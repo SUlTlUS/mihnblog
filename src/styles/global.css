@@ -1610,7 +1610,12 @@ html.theme-vt::view-transition-new(root) {
 	pointer-events: none;
 	opacity: 0;
 	transition: opacity 280ms ease;
-	background: linear-gradient(135deg, rgba(37, 99, 235, 0.06), rgba(180, 126, 36, 0.025) 48%, transparent 78%);
+	background: radial-gradient(
+		320px circle at var(--spot-x, 50%) var(--spot-y, 50%),
+		rgba(37, 99, 235, 0.075),
+		rgba(37, 99, 235, 0.028) 42%,
+		transparent 72%
+	);
 }
 
 /* The 1px border glow requires mask compositing; without it the overlay would
@@ -1625,7 +1630,12 @@ html.theme-vt::view-transition-new(root) {
 		pointer-events: none;
 		opacity: 0;
 		transition: opacity 280ms ease;
-		background: linear-gradient(135deg, rgba(37, 99, 235, 0.45), rgba(180, 126, 36, 0.18) 52%, transparent 78%);
+		background: radial-gradient(
+			210px circle at var(--spot-x, 50%) var(--spot-y, 50%),
+			rgba(37, 99, 235, 0.5),
+			rgba(180, 126, 36, 0.22) 52%,
+			transparent 78%
+		);
 		-webkit-mask:
 			linear-gradient(#fff 0 0) content-box,
 			linear-gradient(#fff 0 0);
@@ -1647,11 +1657,21 @@ html.theme-vt::view-transition-new(root) {
 }
 
 html.dark .card-spotlight::after {
-	background: linear-gradient(135deg, rgba(96, 165, 250, 0.07), rgba(226, 190, 110, 0.028) 48%, transparent 78%);
+	background: radial-gradient(
+		320px circle at var(--spot-x, 50%) var(--spot-y, 50%),
+		rgba(96, 165, 250, 0.085),
+		rgba(96, 165, 250, 0.032) 42%,
+		transparent 72%
+	);
 }
 
 html.dark .card-spotlight::before {
-	background: linear-gradient(135deg, rgba(147, 197, 253, 0.48), rgba(226, 190, 110, 0.2) 52%, transparent 78%);
+	background: radial-gradient(
+		210px circle at var(--spot-x, 50%) var(--spot-y, 50%),
+		rgba(147, 197, 253, 0.55),
+		rgba(226, 190, 110, 0.26) 52%,
+		transparent 78%
+	);
 }
 
 /* --- Scroll-triggered reveal (html.js-reveal is set by JS, so no-JS users see everything) --- */
@@ -2415,6 +2435,7 @@ html.dark .parthenon-grp {
 	--mihn-line: rgba(17, 17, 17, 0.88);
 	--mihn-shadow: 8px 8px 0 rgba(17, 17, 17, 0.92);
 	--mihn-soft-shadow: 0 18px 0 rgba(17, 17, 17, 0.12);
+	--mihn-box-radius: 0.42rem;
 }
 
 html.dark {
@@ -2537,10 +2558,11 @@ body::after {
 
 .mihn-header-brand {
 	border: 3px solid var(--mihn-line);
+	border-radius: var(--mihn-box-radius);
 	background: var(--mihn-yellow);
 	color: #111;
 	box-shadow: 4px 4px 0 var(--mihn-line);
-	transform: rotate(-1deg);
+	transform: none;
 }
 
 .brand-wordmark {
@@ -2557,7 +2579,7 @@ body::after {
 .header-toolbar-button,
 .header-toolbar-icon,
 .view-toggle a {
-	border-radius: 0.28rem !important;
+	border-radius: var(--mihn-box-radius) !important;
 	border: 2px solid var(--mihn-line) !important;
 	background: color-mix(in srgb, var(--mihn-card) 86%, white 14%) !important;
 	color: var(--mihn-ink) !important;
@@ -2573,7 +2595,7 @@ body::after {
 .header-toolbar-button:hover,
 .header-toolbar-icon:hover,
 .view-toggle a:hover {
-	transform: translate(-2px, -2px) rotate(-0.5deg) !important;
+	transform: translate(-2px, -2px) !important;
 	box-shadow: 6px 6px 0 var(--mihn-line) !important;
 	background: var(--mihn-yellow) !important;
 }
@@ -2588,7 +2610,7 @@ body::after {
 	position: relative;
 	overflow: hidden;
 	border: 3px solid var(--mihn-line) !important;
-	border-radius: 0.42rem !important;
+	border-radius: var(--mihn-box-radius) !important;
 	background:
 		linear-gradient(135deg, color-mix(in srgb, var(--mihn-card) 88%, white 12%), color-mix(in srgb, var(--mihn-yellow) 18%, var(--mihn-card) 82%)),
 		var(--mihn-card) !important;
@@ -2598,14 +2620,16 @@ body::after {
 .card-surface::before {
 	content: 'POST / REC';
 	position: absolute;
-	right: -2.8rem;
+	right: 1rem;
 	top: 1rem;
 	z-index: 0;
-	width: 10rem;
-	transform: rotate(34deg);
-	border-block: 2px solid #111;
+	width: auto;
+	transform: none;
+	border: 2px solid #111;
+	border-radius: var(--mihn-box-radius);
 	background: var(--mihn-cyan);
 	color: #111;
+	padding-inline: 0.45rem;
 	text-align: center;
 	font: 900 0.66rem/1.35rem ui-monospace, SFMono-Regular, Menlo, monospace;
 	letter-spacing: 0.18em;
@@ -2654,7 +2678,7 @@ html.dark .post-broadcast-card p {
 }
 
 .card-interactive:hover {
-	transform: translate(-3px, -3px) rotate(-0.35deg) !important;
+	transform: translate(-3px, -3px) !important;
 	box-shadow: 12px 12px 0 var(--mihn-line) !important;
 }
 
@@ -2662,7 +2686,7 @@ html.dark .post-broadcast-card p {
 	position: relative;
 	overflow: hidden;
 	border: 4px solid var(--mihn-line);
-	border-radius: 0.55rem;
+	border-radius: var(--mihn-box-radius);
 	background:
 		linear-gradient(122deg, #111 0 45%, transparent 45% 100%),
 		linear-gradient(128deg, var(--mihn-yellow) 0 7%, transparent 7% 13%, var(--mihn-cyan) 13% 18%, transparent 18% 100%),
@@ -2705,7 +2729,7 @@ html.dark .post-broadcast-card p {
 	justify-content: space-between;
 	gap: 1rem;
 	border: 3px solid var(--mihn-line);
-	border-radius: 0.42rem;
+	border-radius: var(--mihn-box-radius);
 	background:
 		linear-gradient(135deg, color-mix(in srgb, var(--mihn-card) 88%, white 12%), color-mix(in srgb, var(--mihn-yellow) 14%, var(--mihn-card) 86%)),
 		var(--mihn-card);
@@ -2722,7 +2746,7 @@ html.dark .post-broadcast-card p {
 	line-height: 0.82;
 	letter-spacing: 0;
 	text-transform: uppercase;
-	transform: skewX(-7deg);
+	transform: none;
 }
 
 .zzz-official-ribbon {
@@ -2743,6 +2767,7 @@ html.dark .post-broadcast-card p {
 	justify-content: center;
 	min-width: 9rem;
 	border: 3px solid #111;
+	border-radius: var(--mihn-box-radius);
 	background: #111;
 	color: var(--mihn-yellow);
 	box-shadow: 4px 4px 0 var(--mihn-yellow);
@@ -2750,21 +2775,21 @@ html.dark .post-broadcast-card p {
 	font: 900 0.72rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
 	letter-spacing: 0.14em;
 	text-transform: uppercase;
-	transform: skewX(-12deg);
+	transform: none;
 }
 
 .zzz-official-ribbon span:nth-child(2) {
 	background: var(--mihn-yellow);
 	color: #111;
 	box-shadow: 4px 4px 0 #111;
-	transform: translateX(-1.2rem) skewX(-12deg);
+	transform: translateX(-1.2rem);
 }
 
 .zzz-official-ribbon span:nth-child(3) {
 	background: var(--mihn-cyan);
 	color: #111;
 	box-shadow: 4px 4px 0 #111;
-	transform: translateX(-2.4rem) skewX(-12deg);
+	transform: translateX(-2.4rem);
 }
 
 .mihn-hero-image {
@@ -2809,7 +2834,7 @@ html.dark .post-broadcast-card p {
 	line-height: 0.78;
 	letter-spacing: 0;
 	text-transform: uppercase;
-	transform: skewX(-8deg);
+	transform: none;
 }
 
 .mihn-title[data-glitch] {
@@ -2862,6 +2887,7 @@ html.dark .post-broadcast-card p {
 
 .mihn-sticker {
 	border: 3px solid #111;
+	border-radius: var(--mihn-box-radius);
 	background: #fff8df;
 	color: #111;
 	box-shadow: 4px 4px 0 #111;
@@ -2869,7 +2895,7 @@ html.dark .post-broadcast-card p {
 	font: 900 0.72rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
 	letter-spacing: 0.08em;
 	text-transform: uppercase;
-	transform: rotate(var(--r, -2deg));
+	transform: none;
 }
 
 .mihn-sticker.warn {
@@ -2898,6 +2924,7 @@ html.dark .post-broadcast-card p {
 	min-height: 3rem;
 	min-width: 8.5rem;
 	border: 3px solid #111;
+	border-radius: var(--mihn-box-radius);
 	background: #fff8df;
 	color: #111;
 	box-shadow: 5px 5px 0 #111;
@@ -2906,7 +2933,7 @@ html.dark .post-broadcast-card p {
 	letter-spacing: 0.08em;
 	text-decoration: none;
 	text-transform: uppercase;
-	transform: skewX(-8deg);
+	transform: none;
 	transition:
 		transform 180ms cubic-bezier(0.22, 1, 0.36, 1),
 		box-shadow 180ms ease,
@@ -2914,7 +2941,7 @@ html.dark .post-broadcast-card p {
 }
 
 .mihn-cta:hover {
-	transform: translate(-2px, -2px) skewX(-8deg);
+	transform: translate(-2px, -2px);
 	box-shadow: 8px 8px 0 #111;
 	background: var(--mihn-green);
 	color: #111;
@@ -2934,6 +2961,7 @@ html.dark .post-broadcast-card p {
 	align-items: center;
 	gap: 0.7rem;
 	border: 3px solid var(--mihn-line);
+	border-radius: var(--mihn-box-radius);
 	background: var(--mihn-ink);
 	color: var(--mihn-paper);
 	box-shadow: 5px 5px 0 var(--mihn-yellow);
@@ -2944,7 +2972,7 @@ html.dark .post-broadcast-card p {
 	font-weight: 900;
 	letter-spacing: 0;
 	text-transform: uppercase;
-	transform: skewX(-7deg);
+	transform: none;
 }
 
 .markdown-prose {
@@ -2971,7 +2999,7 @@ html.dark .post-broadcast-card p {
 .markdown-prose table,
 .markdown-prose details {
 	border: 3px solid var(--mihn-line) !important;
-	border-radius: 0.35rem !important;
+	border-radius: var(--mihn-box-radius) !important;
 	box-shadow: 6px 6px 0 color-mix(in srgb, var(--mihn-line) 82%, transparent) !important;
 }
 
