@@ -28,8 +28,8 @@ const {
 	post,
 	base = import.meta.env.BASE_URL,
 	titleTag = 'h2',
-	titleClass = 'mt-2 text-xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100',
-	descriptionClass = 'mt-2 font-serif leading-8 text-zinc-600 dark:text-zinc-300',
+	titleClass = 'mt-4 font-sans text-2xl font-black uppercase leading-[0.95] tracking-normal text-[var(--mihn-ink)] md:text-3xl',
+	descriptionClass = 'mt-3 font-mono text-sm font-bold leading-7 text-[color-mix(in_srgb,var(--mihn-ink)_78%,transparent)]',
 	maxMobile = 3,
 	maxDesktop = 3,
 	reloadOnNavigate = false,
@@ -38,9 +38,14 @@ const {
 const tags = (post.data.tags ?? []).filter((tag) => tag.trim().length > 0);
 const analyticsKey = getPostAnalyticsKey(post);
 const Heading = titleTag;
+const postCode = post.id
+	.replace(/[^a-zA-Z0-9]+/g, '-')
+	.replace(/^-|-$/g, '')
+	.slice(0, 18)
+	.toUpperCase();
 ---
 
-<div class="card-surface card-interactive card-spotlight relative h-full">
+<div class="card-surface card-interactive card-spotlight post-broadcast-card relative h-full">
 	{
 		tags.length > 0 && (
 			// Mobile keeps tags in normal flow to prevent overlap; desktop pins them to the corner.
@@ -55,9 +60,16 @@ const Heading = titleTag;
 		data-astro-reload={reloadOnNavigate ? '' : undefined}
 		class:list={['block h-full p-5 no-underline', tags.length > 0 && 'pt-3 md:pt-5']}
 	>
-		<p class="m-0 flex items-center gap-1.5 text-xs text-zinc-500 dark:text-zinc-400">
-			<FormattedDate date={post.data.pubDate} />
-			<span aria-hidden="true">&middot;</span>
+		<p class="m-0 flex flex-wrap items-center gap-2 font-mono text-[11px] font-black uppercase tracking-[0.12em] text-[var(--mihn-ink)]">
+			<span class="inline-flex border-2 border-[var(--mihn-line)] bg-[var(--mihn-yellow)] px-2 py-1 text-black shadow-[2px_2px_0_var(--mihn-line)]">
+				REC
+			</span>
+			<span class="inline-flex border-2 border-[var(--mihn-line)] bg-white/70 px-2 py-1 dark:bg-black/30">
+				<FormattedDate date={post.data.pubDate} />
+			</span>
+			<span class="inline-flex border-2 border-[var(--mihn-line)] bg-[var(--mihn-cyan)] px-2 py-1 text-black shadow-[2px_2px_0_var(--mihn-line)]">
+				{postCode}
+			</span>
 			<span class="inline-flex items-center gap-1" data-post-card-views-root={analyticsKey}>
 				<svg viewBox="0 0 24 24" class="h-3.5 w-3.5 opacity-70" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
 					<path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6-10-6-10-6Z" stroke-linecap="round" stroke-linejoin="round" />

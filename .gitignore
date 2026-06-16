@@ -7,6 +7,7 @@ dist/
 work/
 outputs/
 astro-blog/
+.codegraph/
 
 # dependencies
 node_modules/

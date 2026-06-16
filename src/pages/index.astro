@@ -1,14 +1,10 @@
 ﻿---
 import { getCollection } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
-import BrandMark from '../components/BrandMark.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
-import MeteorShower from '../components/MeteorShower.astro';
 import MobileDrawer from '../components/MobileDrawer.astro';
-import ParthenonColumns from '../components/ParthenonColumns.astro';
 import PostCard from '../components/PostCard.astro';
-import TerminalQuote from '../components/TerminalQuote.astro';
 import { BILIBILI_URL, CREATINF_URL, GITHUB_URL, SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 
 const BASE = import.meta.env.BASE_URL;
@@ -26,63 +22,48 @@ const HOME_WALLPAPER = 'https://img.danarnoux.com/misc/home-2rd1yuubn4hc1.webp';
 		<BaseHead title={`${SITE_TITLE} - Research, Engineering & Technical Notes`} description="A personal blog about research, engineering workflows, and reproducible long-form writing.涵盖编程、技术笔记和工程实践。" />
 	</head>
 	<body>
-		<ParthenonColumns />
-		<MeteorShower density={0.45} heightVh={46} />
 		<Header />
 		<MobileDrawer />
-		<main class="page-shell page-fade-in py-10 md:py-14" transition:name="page-main" transition:animate="fade">
-			<div class="space-y-6">
-				<section class="hero-enter overflow-hidden rounded-2xl border border-zinc-200 bg-white dark:border-zinc-700 dark:bg-zinc-900">
-					<div class="relative h-[44vh] min-h-[300px] w-full">
+		<main class="page-shell page-fade-in pb-12 pt-16 md:pb-16 md:pt-20" transition:name="page-main" transition:animate="fade">
+			<div class="space-y-9">
+				<section class="mihn-hero hero-enter min-h-[520px] md:min-h-[610px]">
+					<div class="absolute inset-0">
 						<img
 							src={HOME_WALLPAPER}
 							alt="Homepage wallpaper"
-							class="hero-kenburns h-full w-full object-cover object-[77%_center] md:object-center"
+							class="mihn-hero-image hero-kenburns h-full w-full object-cover object-[74%_center] md:object-center"
 						/>
-						<div class="absolute inset-0 bg-zinc-900/10 dark:bg-zinc-950/25"></div>
-						<div class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-zinc-950/35 to-transparent"></div>
+						<div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(0,0,0,0.82),rgba(0,0,0,0.34)_48%,rgba(0,0,0,0.64))]"></div>
 					</div>
-				</section>
-
-				<section class="section-enter section-enter-delay-1 grid grid-cols-1 gap-6 items-start md:grid-cols-[minmax(0,1fr)_auto] md:items-center">
-					<div class="hero-enter hero-enter-delay-2 max-w-[40rem]">
-						<h1 class="brand-wordmark flex flex-wrap items-center gap-x-2.5 gap-y-1" transition:name="page-title" transition:animate="fade">
-							<BrandMark class="h-[2.3rem] -ml-1 self-center md:h-[3.05rem]" />
-							<span class="text-[2.55rem] leading-none text-zinc-900 dark:text-zinc-100 md:text-[3.4rem]">
-								靡虹
-							</span>
-							<span class="text-[2.55rem] italic leading-none text-zinc-600 dark:text-zinc-300 md:text-[3.4rem]">
-								MiHN
-							</span>
+					<div class="mihn-label-cloud top" aria-hidden="true">
+						<span class="mihn-sticker warn" style="--r:-3deg">NO.129251743</span>
+						<span class="mihn-sticker cyan" style="--r:2deg">VHS LOG</span>
+						<span class="mihn-sticker hot" style="--r:-1deg">ERROR-FREE?</span>
+					</div>
+					<div class="mihn-label-cloud right" aria-hidden="true">
+						<span class="mihn-sticker" style="--r:3deg">RSS FEED</span>
+						<span class="mihn-sticker warn" style="--r:-2deg">BLOG WALL</span>
+						<span class="mihn-sticker cyan" style="--r:1deg">MIHN.CC.CD</span>
+					</div>
+					<div class="mihn-hero-copy">
+						<span class="mihn-kicker">New Eridu Signal</span>
+						<h1 class="mihn-title" data-glitch="靡虹 MiHN" transition:name="page-title" transition:animate="fade">
+							靡虹 MiHN
 						</h1>
-						<p class="mt-3 max-w-xl font-sans text-[15px] leading-7 text-zinc-500 dark:text-zinc-400">
-							Notes on engineering, systems, and long-form writing.
+						<p class="mt-5 max-w-2xl border-l-[6px] border-[var(--mihn-yellow)] bg-black/58 px-4 py-3 font-mono text-sm font-bold uppercase leading-7 text-[#fff8df] backdrop-blur-sm md:text-base">
+							{SITE_DESCRIPTION} / engineering notes / code fragments / city-feed archive
 						</p>
-						<div class="mt-3 flex flex-wrap items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-zinc-400 dark:text-zinc-500">
-							<span class="apple-meta-pill">
-								<span class="apple-meta-pill-label">Research</span>
-							</span>
-							<span class="apple-meta-pill">
-								<span class="apple-meta-pill-label">Engineering</span>
-							</span>
-							<span class="apple-meta-pill">
-								<span class="apple-meta-pill-label">Notes</span>
-							</span>
+						<div class="mt-5 flex flex-wrap gap-2">
+							<span class="mihn-sticker warn" style="--r:-2deg">Research</span>
+							<span class="mihn-sticker cyan" style="--r:1deg">Engineering</span>
+							<span class="mihn-sticker hot" style="--r:2deg">Notes</span>
 						</div>
-						<div class="mt-3.5 flex flex-wrap gap-2.5">
-							<span class="inline-flex items-center rounded-full border border-zinc-200/85 bg-white/78 px-3 py-1.5 text-[11px] font-medium tracking-[0.01em] text-zinc-600 shadow-[0_8px_20px_rgba(15,23,42,0.04)] backdrop-blur-sm dark:border-zinc-700/80 dark:bg-zinc-900/72 dark:text-zinc-300">
-								UI: English
-							</span>
-							<span class="inline-flex items-center rounded-full border border-zinc-200/85 bg-white/78 px-3 py-1.5 text-[11px] font-medium tracking-[0.01em] text-zinc-600 shadow-[0_8px_20px_rgba(15,23,42,0.04)] backdrop-blur-sm dark:border-zinc-700/80 dark:bg-zinc-900/72 dark:text-zinc-300">
-								Content: Chinese (long-form)
-							</span>
-						</div>
-						<div class="mt-3.5 flex items-center gap-2">
+						<div class="mt-6 flex items-center gap-3">
 							<a
 								href={GITHUB_URL}
 								target="_blank"
 								rel="noreferrer"
-								class="icon-button inline-flex h-10 w-10 items-center justify-center rounded-xl border border-zinc-200 text-zinc-600 transition-colors hover:border-zinc-400 hover:text-zinc-900 dark:border-zinc-700 dark:text-zinc-300 dark:hover:border-zinc-500 dark:hover:text-zinc-100"
+								class="icon-button inline-flex h-11 w-11 items-center justify-center border-[3px] border-black bg-[var(--mihn-yellow)] text-black shadow-[4px_4px_0_#111] transition-transform hover:-translate-y-1"
 								aria-label="GitHub"
 							>
 								<svg viewBox="0 0 24 24" class="h-5 w-5 fill-current" aria-hidden="true">
@@ -94,7 +75,7 @@ const HOME_WALLPAPER = 'https://img.danarnoux.com/misc/home-2rd1yuubn4hc1.webp';
 								href={BILIBILI_URL}
 								target="_blank"
 								rel="noreferrer"
-								class="icon-button inline-flex h-10 w-10 items-center justify-center rounded-xl border border-zinc-200 text-zinc-600 transition-colors hover:border-zinc-400 hover:text-zinc-900 dark:border-zinc-700 dark:text-zinc-300 dark:hover:border-zinc-500 dark:hover:text-zinc-100"
+								class="icon-button inline-flex h-11 w-11 items-center justify-center border-[3px] border-black bg-[var(--mihn-cyan)] text-black shadow-[4px_4px_0_#111] transition-transform hover:-translate-y-1"
 								aria-label="Bilibili"
 							>
 								<svg viewBox="0 0 24 24" class="h-5 w-5 fill-current" aria-hidden="true">
@@ -106,7 +87,7 @@ const HOME_WALLPAPER = 'https://img.danarnoux.com/misc/home-2rd1yuubn4hc1.webp';
 								href={CREATINF_URL}
 								target="_blank"
 								rel="noreferrer"
-								class="icon-button inline-flex h-10 w-10 items-center justify-center rounded-xl border border-zinc-200 text-zinc-600 transition-colors hover:border-zinc-400 hover:text-zinc-900 dark:border-zinc-700 dark:text-zinc-300 dark:hover:border-zinc-500 dark:hover:text-zinc-100"
+								class="icon-button inline-flex h-11 w-11 items-center justify-center border-[3px] border-black bg-[var(--mihn-magenta)] text-black shadow-[4px_4px_0_#111] transition-transform hover:-translate-y-1"
 								aria-label="CreatInf"
 							>
 								<span class="text-lg font-semibold leading-none">∞</span>
@@ -114,14 +95,10 @@ const HOME_WALLPAPER = 'https://img.danarnoux.com/misc/home-2rd1yuubn4hc1.webp';
 							</a>
 						</div>
 					</div>
-
-					<div class="hero-enter hero-enter-delay-2 w-full max-w-sm justify-self-end md:self-start">
-						<TerminalQuote />
-					</div>
 				</section>
 
 				<!-- Decorative pop-art ribbon spanning the full hero row width. -->
-				<section class="hero-enter hero-enter-delay-2 -mt-1" aria-hidden="true">
+				<section class="hero-enter hero-enter-delay-2 -mt-2" aria-hidden="true">
 					<div class="dots-band" data-dots-band>
 						<canvas></canvas>
 					</div>
@@ -130,10 +107,10 @@ const HOME_WALLPAPER = 'https://img.danarnoux.com/misc/home-2rd1yuubn4hc1.webp';
 
 			<section class="mt-10">
 				<div class="mb-4 flex items-center justify-between" data-reveal>
-					<h2 class="text-xl font-semibold tracking-tight">Latest Posts</h2>
+					<h2 class="mihn-section-title">Latest Posts</h2>
 					<a
 						href={`${BASE}blog/`}
-						class="apple-float-chip inline-flex items-center gap-1.5 rounded-xl border border-zinc-300/90 bg-zinc-50/96 px-3 py-1.5 text-sm font-medium text-zinc-700 no-underline dark:border-zinc-700/90 dark:bg-zinc-900/96 dark:text-zinc-300"
+						class="apple-float-chip inline-flex items-center gap-1.5 px-3 py-2 text-sm no-underline"
 					>
 						<span class="apple-float-label">
 							<span>View all</span>
@@ -152,8 +129,6 @@ const HOME_WALLPAPER = 'https://img.danarnoux.com/misc/home-2rd1yuubn4hc1.webp';
 									post={post}
 									base={BASE}
 									titleTag="h3"
-									titleClass="mt-2 text-lg font-semibold tracking-tight text-zinc-900 dark:text-zinc-100"
-									descriptionClass="mt-2 font-serif text-sm leading-7 text-zinc-600 dark:text-zinc-300"
 									maxMobile={3}
 									maxDesktop={3}
 									reloadOnNavigate={true}

@@ -2419,3 +2419,489 @@ html.dark .parthenon-grp {
 		stroke-dashoffset: 0 !important;
 	}
 }
+
+/* --- MiHN street-media redesign ---
+   Inspired by dense in-universe graphic systems: warning labels, VHS texture,
+   high contrast print color, sticker panels, and controlled glitch motion. */
+:root {
+	--mihn-ink: #111111;
+	--mihn-paper: #f3f0e7;
+	--mihn-card: #fff8df;
+	--mihn-yellow: #ffd900;
+	--mihn-orange: #ff5a1f;
+	--mihn-cyan: #00d8ff;
+	--mihn-green: #9cff00;
+	--mihn-magenta: #ff2f92;
+	--mihn-line: rgba(17, 17, 17, 0.88);
+	--mihn-shadow: 8px 8px 0 rgba(17, 17, 17, 0.92);
+	--mihn-soft-shadow: 0 18px 0 rgba(17, 17, 17, 0.12);
+}
+
+html.dark {
+	--mihn-ink: #f7f3e7;
+	--mihn-paper: #10100d;
+	--mihn-card: #171713;
+	--mihn-line: rgba(247, 243, 231, 0.82);
+	--mihn-shadow: 8px 8px 0 rgba(255, 217, 0, 0.74);
+	--mihn-soft-shadow: 0 18px 0 rgba(255, 217, 0, 0.12);
+}
+
+body {
+	background-color: var(--mihn-paper) !important;
+	background-image:
+		radial-gradient(circle at 12px 12px, rgba(17, 17, 17, 0.14) 1.2px, transparent 1.4px),
+		linear-gradient(90deg, rgba(255, 217, 0, 0.18) 0 11%, transparent 11% 100%),
+		linear-gradient(135deg, rgba(0, 216, 255, 0.16), transparent 35%),
+		linear-gradient(315deg, rgba(255, 47, 146, 0.13), transparent 42%);
+	background-size: 18px 18px, 100% 100%, 100% 100%, 100% 100%;
+	color: var(--mihn-ink) !important;
+}
+
+html.dark body {
+	background-image:
+		linear-gradient(rgba(255, 255, 255, 0.035) 50%, transparent 50%),
+		radial-gradient(circle at 12px 12px, rgba(255, 217, 0, 0.16) 1px, transparent 1.4px),
+		linear-gradient(90deg, rgba(255, 217, 0, 0.1) 0 11%, transparent 11% 100%),
+		linear-gradient(135deg, rgba(0, 216, 255, 0.14), transparent 35%),
+		linear-gradient(315deg, rgba(255, 47, 146, 0.13), transparent 42%);
+	background-size: 100% 4px, 18px 18px, 100% 100%, 100% 100%, 100% 100%;
+}
+
+body::before,
+body::after {
+	content: '';
+	position: fixed;
+	inset: 0;
+	z-index: -1;
+	pointer-events: none;
+}
+
+body::before {
+	background:
+		linear-gradient(90deg, transparent 0 68%, rgba(17, 17, 17, 0.86) 68% calc(68% + 8px), transparent calc(68% + 8px)),
+		repeating-linear-gradient(135deg, transparent 0 22px, rgba(255, 217, 0, 0.28) 22px 34px, transparent 34px 56px);
+	opacity: 0.24;
+	mix-blend-mode: multiply;
+}
+
+html.dark body::before {
+	opacity: 0.18;
+	mix-blend-mode: screen;
+}
+
+body::after {
+	background:
+		linear-gradient(transparent 50%, rgba(0, 0, 0, 0.08) 50%),
+		radial-gradient(circle at 50% 20%, transparent 0 38%, rgba(0, 0, 0, 0.18) 100%);
+	background-size: 100% 5px, 100% 100%;
+	opacity: 0.22;
+}
+
+.page-shell {
+	max-width: 72rem !important;
+}
+
+.site-header {
+	border-bottom: 4px solid var(--mihn-line) !important;
+	background: color-mix(in srgb, var(--mihn-paper) 86%, transparent) !important;
+	backdrop-filter: blur(12px) saturate(1.25);
+}
+
+.site-header::after {
+	content: 'MIHN BROADCAST / NO SIGNAL / BLOG FEED';
+	position: absolute;
+	inset-inline: 0;
+	bottom: -1.35rem;
+	height: 1.35rem;
+	overflow: hidden;
+	border-bottom: 2px solid var(--mihn-line);
+	background: var(--mihn-yellow);
+	color: #111;
+	font: 800 0.66rem/1.35rem ui-monospace, SFMono-Regular, Menlo, monospace;
+	letter-spacing: 0.18em;
+	white-space: nowrap;
+	text-align: center;
+}
+
+.mihn-header-brand {
+	border: 3px solid var(--mihn-line);
+	background: var(--mihn-yellow);
+	color: #111;
+	box-shadow: 4px 4px 0 var(--mihn-line);
+	transform: rotate(-1deg);
+}
+
+.brand-wordmark {
+	font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', 'Microsoft YaHei UI', sans-serif !important;
+	font-weight: 900 !important;
+	letter-spacing: 0 !important;
+	text-transform: uppercase;
+}
+
+.nav-item,
+.apple-float-chip,
+.apple-visit-button,
+.apple-meta-pill,
+.header-toolbar-button,
+.header-toolbar-icon,
+.view-toggle a {
+	border-radius: 0.28rem !important;
+	border: 2px solid var(--mihn-line) !important;
+	background: color-mix(in srgb, var(--mihn-card) 86%, white 14%) !important;
+	color: var(--mihn-ink) !important;
+	box-shadow: 3px 3px 0 var(--mihn-line) !important;
+	font-weight: 900 !important;
+	letter-spacing: 0 !important;
+	text-transform: uppercase;
+}
+
+.nav-item:hover,
+.apple-float-chip:hover,
+.apple-visit-button:hover,
+.header-toolbar-button:hover,
+.header-toolbar-icon:hover,
+.view-toggle a:hover {
+	transform: translate(-2px, -2px) rotate(-0.5deg) !important;
+	box-shadow: 6px 6px 0 var(--mihn-line) !important;
+	background: var(--mihn-yellow) !important;
+}
+
+.nav-item-active,
+.view-toggle a[aria-selected='true'] {
+	background: var(--mihn-orange) !important;
+	color: #111 !important;
+}
+
+.card-surface {
+	position: relative;
+	overflow: hidden;
+	border: 3px solid var(--mihn-line) !important;
+	border-radius: 0.42rem !important;
+	background:
+		linear-gradient(135deg, color-mix(in srgb, var(--mihn-card) 88%, white 12%), color-mix(in srgb, var(--mihn-yellow) 18%, var(--mihn-card) 82%)),
+		var(--mihn-card) !important;
+	box-shadow: var(--mihn-shadow) !important;
+}
+
+.card-surface::before {
+	content: 'POST / REC';
+	position: absolute;
+	right: -2.8rem;
+	top: 1rem;
+	z-index: 0;
+	width: 10rem;
+	transform: rotate(34deg);
+	border-block: 2px solid #111;
+	background: var(--mihn-cyan);
+	color: #111;
+	text-align: center;
+	font: 900 0.66rem/1.35rem ui-monospace, SFMono-Regular, Menlo, monospace;
+	letter-spacing: 0.18em;
+}
+
+.card-surface::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	z-index: 0;
+	pointer-events: none;
+	background:
+		radial-gradient(circle at 15% 20%, rgba(17, 17, 17, 0.16) 0 1.5px, transparent 1.8px),
+		linear-gradient(transparent 50%, rgba(17, 17, 17, 0.04) 50%);
+	background-size: 12px 12px, 100% 6px;
+	mix-blend-mode: multiply;
+	opacity: 0.55;
+}
+
+.card-surface > * {
+	position: relative;
+	z-index: 1;
+}
+
+html.dark .post-broadcast-card {
+	background:
+		linear-gradient(135deg, rgba(255, 217, 0, 0.16), rgba(0, 216, 255, 0.06)),
+		#171713 !important;
+}
+
+html.dark .post-broadcast-card::after {
+	opacity: 0.28;
+	mix-blend-mode: screen;
+}
+
+.post-broadcast-card :is(h2, h3) {
+	color: var(--mihn-ink) !important;
+	text-shadow: 2px 2px 0 color-mix(in srgb, var(--mihn-yellow) 34%, transparent);
+}
+
+html.dark .post-broadcast-card :is(h2, h3) {
+	color: #fff8df !important;
+	text-shadow: 3px 3px 0 #000;
+}
+
+html.dark .post-broadcast-card p {
+	color: rgba(255, 248, 223, 0.86) !important;
+}
+
+.card-interactive:hover {
+	transform: translate(-3px, -3px) rotate(-0.35deg) !important;
+	box-shadow: 12px 12px 0 var(--mihn-line) !important;
+}
+
+.mihn-hero {
+	position: relative;
+	overflow: hidden;
+	border: 4px solid var(--mihn-line);
+	border-radius: 0.55rem;
+	background: #111;
+	box-shadow: var(--mihn-shadow);
+	isolation: isolate;
+}
+
+.mihn-hero::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	z-index: 2;
+	pointer-events: none;
+	background:
+		linear-gradient(transparent 52%, rgba(0, 0, 0, 0.22) 52%),
+		radial-gradient(circle at 16% 24%, rgba(255, 217, 0, 0.28) 0 1.8px, transparent 2px);
+	background-size: 100% 5px, 16px 16px;
+	mix-blend-mode: screen;
+	opacity: 0.72;
+}
+
+.mihn-hero::after {
+	content: 'CHANNEL 04 / SIGNAL MIHN / 129251743';
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 5;
+	border-top: 3px solid #111;
+	background: var(--mihn-yellow);
+	color: #111;
+	font: 900 0.78rem/2rem ui-monospace, SFMono-Regular, Menlo, monospace;
+	letter-spacing: 0.18em;
+	text-align: center;
+}
+
+.mihn-hero-image {
+	filter: saturate(1.32) contrast(1.08);
+	transform-origin: center;
+}
+
+.mihn-hero-copy {
+	position: absolute;
+	inset: 0;
+	z-index: 4;
+	display: grid;
+	align-content: end;
+	padding: clamp(1.25rem, 5vw, 3.5rem);
+	color: #fff8df;
+	text-shadow: 4px 4px 0 #111;
+}
+
+.mihn-kicker {
+	display: inline-flex;
+	width: fit-content;
+	align-items: center;
+	gap: 0.55rem;
+	border: 3px solid #111;
+	background: var(--mihn-green);
+	padding: 0.32rem 0.6rem;
+	color: #111;
+	box-shadow: 4px 4px 0 #111;
+	font: 900 0.76rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+	letter-spacing: 0.18em;
+	text-transform: uppercase;
+}
+
+.mihn-title {
+	margin-top: 0.75rem;
+	max-width: 11ch;
+	color: #fff8df;
+	font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', 'Microsoft YaHei UI', sans-serif;
+	font-size: clamp(3.8rem, 16vw, 10rem);
+	font-weight: 900;
+	font-style: italic;
+	line-height: 0.78;
+	letter-spacing: 0;
+	text-transform: uppercase;
+	transform: skewX(-8deg);
+}
+
+.mihn-title[data-glitch] {
+	position: relative;
+}
+
+.mihn-title[data-glitch]::before,
+.mihn-title[data-glitch]::after {
+	content: attr(data-glitch);
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+	opacity: 0;
+}
+
+.mihn-title[data-glitch]::before {
+	color: var(--mihn-cyan);
+	transform: translate(3px, -2px);
+}
+
+.mihn-title[data-glitch]::after {
+	color: var(--mihn-magenta);
+	transform: translate(-3px, 2px);
+}
+
+.mihn-hero:hover .mihn-title[data-glitch]::before,
+.mihn-hero:hover .mihn-title[data-glitch]::after {
+	animation: mihn-glitch 620ms steps(2, end) both;
+}
+
+.mihn-label-cloud {
+	position: absolute;
+	z-index: 6;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.55rem;
+	max-width: min(32rem, calc(100% - 2rem));
+}
+
+.mihn-label-cloud.top {
+	top: 1rem;
+	left: 1rem;
+}
+
+.mihn-label-cloud.right {
+	right: 1rem;
+	bottom: 3.2rem;
+	justify-content: flex-end;
+}
+
+.mihn-sticker {
+	border: 3px solid #111;
+	background: #fff8df;
+	color: #111;
+	box-shadow: 4px 4px 0 #111;
+	padding: 0.36rem 0.58rem;
+	font: 900 0.72rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	transform: rotate(var(--r, -2deg));
+}
+
+.mihn-sticker.warn {
+	background: var(--mihn-yellow);
+}
+
+.mihn-sticker.hot {
+	background: var(--mihn-orange);
+}
+
+.mihn-sticker.cyan {
+	background: var(--mihn-cyan);
+}
+
+.mihn-section-title {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.7rem;
+	border: 3px solid var(--mihn-line);
+	background: var(--mihn-ink);
+	color: var(--mihn-paper);
+	box-shadow: 5px 5px 0 var(--mihn-yellow);
+	padding: 0.4rem 0.7rem;
+	font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', 'Microsoft YaHei UI', sans-serif;
+	font-size: clamp(1.45rem, 4vw, 2.4rem);
+	font-style: italic;
+	font-weight: 900;
+	letter-spacing: 0;
+	text-transform: uppercase;
+	transform: skewX(-7deg);
+}
+
+.markdown-prose {
+	--tw-prose-body: color-mix(in srgb, var(--mihn-ink) 86%, transparent) !important;
+	--tw-prose-headings: var(--mihn-ink) !important;
+	--tw-prose-links: #006b82 !important;
+	--tw-prose-bold: var(--mihn-ink) !important;
+	--tw-prose-counters: var(--mihn-orange) !important;
+	--tw-prose-bullets: var(--mihn-orange) !important;
+}
+
+.markdown-prose h2 {
+	border-bottom: 4px solid var(--mihn-line) !important;
+	background: linear-gradient(90deg, var(--mihn-yellow), transparent 82%);
+	padding: 0.25rem 0.55rem 0.45rem !important;
+	font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', 'Microsoft YaHei UI', sans-serif !important;
+	font-style: italic;
+	letter-spacing: 0 !important;
+	text-transform: uppercase;
+}
+
+.markdown-prose blockquote:not(.markdown-alert),
+.markdown-prose pre,
+.markdown-prose table,
+.markdown-prose details {
+	border: 3px solid var(--mihn-line) !important;
+	border-radius: 0.35rem !important;
+	box-shadow: 6px 6px 0 color-mix(in srgb, var(--mihn-line) 82%, transparent) !important;
+}
+
+.reading-progress {
+	height: 5px !important;
+	background: linear-gradient(90deg, var(--mihn-yellow), var(--mihn-orange), var(--mihn-cyan), var(--mihn-magenta)) !important;
+}
+
+@keyframes mihn-glitch {
+	0%,
+	100% {
+		opacity: 0;
+		clip-path: inset(0 0 0 0);
+	}
+	18% {
+		opacity: 0.86;
+		clip-path: inset(0 0 62% 0);
+	}
+	36% {
+		opacity: 0.72;
+		clip-path: inset(52% 0 22% 0);
+	}
+	58% {
+		opacity: 0.9;
+		clip-path: inset(18% 0 55% 0);
+	}
+	78% {
+		opacity: 0.55;
+		clip-path: inset(68% 0 4% 0);
+	}
+}
+
+@media (max-width: 48rem) {
+	.site-header::after {
+		font-size: 0.56rem;
+		letter-spacing: 0.08em;
+	}
+
+	.mihn-hero-copy {
+		padding: 1rem;
+		padding-bottom: 3.6rem;
+	}
+
+	.mihn-label-cloud.right {
+		display: none;
+	}
+
+	.mihn-title {
+		font-size: clamp(3.2rem, 18vw, 5.4rem);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.mihn-hero:hover .mihn-title[data-glitch]::before,
+	.mihn-hero:hover .mihn-title[data-glitch]::after {
+		animation: none !important;
+	}
+}
