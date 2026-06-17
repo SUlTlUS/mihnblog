@@ -2489,19 +2489,7 @@ body::after {
 }
 
 .site-header::after {
-	content: 'MIHN BROADCAST / NO SIGNAL / BLOG FEED';
-	position: absolute;
-	inset-inline: 0;
-	bottom: -1.35rem;
-	height: 1.35rem;
-	overflow: hidden;
-	border-bottom: 2px solid var(--mihn-line);
-	background: var(--mihn-yellow);
-	color: #111;
-	font: 800 0.66rem/1.35rem ui-monospace, SFMono-Regular, Menlo, monospace;
-	letter-spacing: 0.18em;
-	white-space: nowrap;
-	text-align: center;
+	display: none;
 }
 
 .mihn-header-brand {
@@ -2981,11 +2969,6 @@ html.dark .post-broadcast-card p {
 }
 
 @media (max-width: 48rem) {
-	.site-header::after {
-		font-size: 0.56rem;
-		letter-spacing: 0.08em;
-	}
-
 	.mihn-hero-copy {
 		padding: 1rem;
 		padding-bottom: 3.6rem;
