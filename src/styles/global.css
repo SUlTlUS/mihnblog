@@ -2483,32 +2483,8 @@ body::before {
 	background-position: 0 0, 0 0;
 	opacity: 0.38;
 	mix-blend-mode: multiply;
-	-webkit-mask-image: linear-gradient(
-		102deg,
-		transparent 0%,
-		rgba(0, 0, 0, 0.12) 12%,
-		rgba(0, 0, 0, 0.95) 28%,
-		rgba(0, 0, 0, 0.18) 46%,
-		transparent 62%,
-		rgba(0, 0, 0, 0.82) 82%,
-		transparent 100%
-	);
-	mask-image: linear-gradient(
-		102deg,
-		transparent 0%,
-		rgba(0, 0, 0, 0.12) 12%,
-		rgba(0, 0, 0, 0.95) 28%,
-		rgba(0, 0, 0, 0.18) 46%,
-		transparent 62%,
-		rgba(0, 0, 0, 0.82) 82%,
-		transparent 100%
-	);
-	-webkit-mask-repeat: repeat;
-	mask-repeat: repeat;
-	-webkit-mask-size: 260% 100%;
-	mask-size: 260% 100%;
-	animation: mihn-density-wave 11s ease-in-out infinite alternate;
-	will-change: background-size, -webkit-mask-position, mask-position, -webkit-mask-size, mask-size, opacity;
+	animation: mihn-density-wave 9s ease-in-out infinite alternate;
+	will-change: background-size, opacity;
 }
 
 html.dark body::before {
@@ -3028,49 +3004,24 @@ html.dark .post-broadcast-card p {
 
 @keyframes mihn-density-wave {
 	0% {
-		background-size: 58px 58px, 92px 92px;
+		background-size: 72px 72px, 116px 116px;
 		background-position: 0 0, 0 0;
-		-webkit-mask-position: 0% 0;
-		mask-position: 0% 0;
-		-webkit-mask-size: 340% 100%;
-		mask-size: 340% 100%;
-		opacity: 0.22;
+		opacity: 0.28;
 	}
-	28% {
-		background-size: 34px 34px, 58px 58px;
+	35% {
+		background-size: 38px 38px, 68px 68px;
 		background-position: 0 0, 0 0;
-		-webkit-mask-position: 18% 0;
-		mask-position: 18% 0;
-		-webkit-mask-size: 260% 100%;
-		mask-size: 260% 100%;
-		opacity: 0.34;
-	}
-	56% {
-		background-size: 14px 14px, 24px 24px;
-		background-position: 0 0, 0 0;
-		-webkit-mask-position: 48% 0;
-		mask-position: 48% 0;
-		-webkit-mask-size: 180% 100%;
-		mask-size: 180% 100%;
-		opacity: 0.48;
-	}
-	78% {
-		background-size: 42px 42px, 70px 70px;
-		background-position: 0 0, 0 0;
-		-webkit-mask-position: 76% 0;
-		mask-position: 76% 0;
-		-webkit-mask-size: 285% 100%;
-		mask-size: 285% 100%;
 		opacity: 0.36;
 	}
-	100% {
-		background-size: 72px 72px, 110px 110px;
+	68% {
+		background-size: 16px 16px, 30px 30px;
 		background-position: 0 0, 0 0;
-		-webkit-mask-position: 100% 0;
-		mask-position: 100% 0;
-		-webkit-mask-size: 360% 100%;
-		mask-size: 360% 100%;
-		opacity: 0.24;
+		opacity: 0.44;
+	}
+	100% {
+		background-size: 88px 88px, 132px 132px;
+		background-position: 0 0, 0 0;
+		opacity: 0.26;
 	}
 }
 
