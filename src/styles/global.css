@@ -2450,20 +2450,17 @@ html.dark {
 body {
 	background-color: var(--mihn-paper) !important;
 	background-image:
-		repeating-linear-gradient(135deg, rgba(17, 17, 17, 0.3) 0 2px, rgba(17, 17, 17, 0.3) 2px 5px, transparent 5px 11px),
 		linear-gradient(135deg, rgba(0, 216, 255, 0.16), transparent 35%),
 		linear-gradient(315deg, rgba(255, 47, 146, 0.13), transparent 42%);
-	background-size: 34px 34px, 100% 100%, 100% 100%;
+	background-size: 100% 100%, 100% 100%;
 	color: var(--mihn-ink) !important;
 }
 
 html.dark body {
 	background-image:
-		linear-gradient(rgba(255, 255, 255, 0.035) 50%, transparent 50%),
-		repeating-linear-gradient(135deg, rgba(0, 0, 0, 0.52) 0 2px, rgba(0, 0, 0, 0.52) 2px 5px, transparent 5px 11px),
 		linear-gradient(135deg, rgba(0, 216, 255, 0.14), transparent 35%),
 		linear-gradient(315deg, rgba(255, 47, 146, 0.13), transparent 42%);
-	background-size: 100% 4px, 34px 34px, 100% 100%, 100% 100%;
+	background-size: 100% 100%, 100% 100%;
 }
 
 body::before,
@@ -2476,28 +2473,25 @@ body::after {
 }
 
 body::before {
-	background:
-		repeating-linear-gradient(135deg, rgba(0, 0, 0, 0.64) 0 2px, rgba(0, 0, 0, 0.64) 2px 6px, transparent 6px 14px),
-		repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0 1px, transparent 1px 16px);
-	background-size: 42px 42px, 68px 68px;
-	background-position: 0 0, 0 0;
-	opacity: 0.38;
+	background-image: repeating-linear-gradient(
+		135deg,
+		rgba(0, 0, 0, 0.74) 0 3px,
+		transparent 3px 11px
+	);
+	background-size: 16px 16px;
+	background-position: 0 0;
+	opacity: 0.34;
 	mix-blend-mode: multiply;
-	animation: mihn-density-wave 9s ease-in-out infinite alternate;
-	will-change: background-size, opacity;
 }
 
 html.dark body::before {
-	opacity: 0.24;
-	mix-blend-mode: screen;
+	opacity: 0.3;
+	mix-blend-mode: multiply;
 }
 
 body::after {
-	background:
-		linear-gradient(transparent 50%, rgba(0, 0, 0, 0.08) 50%),
-		radial-gradient(circle at 50% 20%, transparent 0 38%, rgba(0, 0, 0, 0.18) 100%);
-	background-size: 100% 5px, 100% 100%;
-	opacity: 0.22;
+	background: radial-gradient(circle at 50% 20%, transparent 0 38%, rgba(0, 0, 0, 0.16) 100%);
+	opacity: 0.18;
 }
 
 .page-shell {
@@ -2999,29 +2993,6 @@ html.dark .post-broadcast-card p {
 	78% {
 		opacity: 0.55;
 		clip-path: inset(68% 0 4% 0);
-	}
-}
-
-@keyframes mihn-density-wave {
-	0% {
-		background-size: 72px 72px, 116px 116px;
-		background-position: 0 0, 0 0;
-		opacity: 0.28;
-	}
-	35% {
-		background-size: 38px 38px, 68px 68px;
-		background-position: 0 0, 0 0;
-		opacity: 0.36;
-	}
-	68% {
-		background-size: 16px 16px, 30px 30px;
-		background-position: 0 0, 0 0;
-		opacity: 0.44;
-	}
-	100% {
-		background-size: 88px 88px, 132px 132px;
-		background-position: 0 0, 0 0;
-		opacity: 0.26;
 	}
 }
 
