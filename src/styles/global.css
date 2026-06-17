@@ -2478,7 +2478,7 @@ body::before {
 		rgba(0, 0, 0, 0.74) 0 3px,
 		transparent 3px 11px
 	);
-	background-size: 16px 16px;
+	background-size: auto;
 	background-position: 0 0;
 	opacity: 0.34;
 	mix-blend-mode: multiply;
