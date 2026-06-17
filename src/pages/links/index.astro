@@ -94,7 +94,7 @@ const projectLinks = links.filter((item) => item.kind === 'project');
 											if ('__placeholder' in item) {
 												return (
 													<article
-														class="min-h-[210px] rounded-2xl border border-zinc-200 bg-white/90 p-5 opacity-0 pointer-events-none shadow-sm dark:border-zinc-800 dark:bg-zinc-950/80"
+														class="mihn-box min-h-[210px] p-5 opacity-0 pointer-events-none"
 														aria-hidden="true"
 													/>
 												);
@@ -112,7 +112,7 @@ const projectLinks = links.filter((item) => item.kind === 'project');
   : githubAvatar;
 
 											return (
-												<article class="card-spotlight group relative min-h-[210px] rounded-2xl border border-zinc-200 bg-white/90 p-5 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-zinc-300 hover:shadow-md dark:border-zinc-800 dark:bg-zinc-950/80 dark:hover:border-zinc-600">
+												<article class="mihn-box mihn-box-interactive card-spotlight group relative min-h-[210px] p-5">
 													<div class="flex items-start justify-between gap-3">
 														<div class="flex items-center gap-3">
 															{avatarSrc ? (
@@ -213,7 +213,7 @@ const projectLinks = links.filter((item) => item.kind === 'project');
   : githubAvatar;
 
 							return (
-								<article data-reveal style={`--reveal-delay: ${(idx % 3) * 70}ms`} class="card-spotlight group relative rounded-2xl border border-zinc-200 bg-white/95 p-6 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-zinc-300 hover:shadow-md dark:border-zinc-800 dark:bg-zinc-950/85 dark:hover:border-zinc-600">
+								<article data-reveal style={`--reveal-delay: ${(idx % 3) * 70}ms`} class="mihn-box mihn-box-interactive card-spotlight group relative p-6">
 									<div class="flex items-start justify-between gap-3">
 										<div class="flex items-center gap-3">
 											{avatarSrc ? (

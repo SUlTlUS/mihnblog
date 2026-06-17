@@ -21,7 +21,7 @@ const { postSlug } = Astro.props;
 	<div id="comment-form-container" class="mt-6">
 		<!-- Show login prompt when not logged in -->
 		<div id="login-prompt" class="hidden">
-			<div class="flex flex-col items-start gap-3 rounded-2xl border border-zinc-200/80 bg-white/70 p-5 backdrop-blur-sm sm:flex-row sm:items-center sm:justify-between dark:border-zinc-800/80 dark:bg-zinc-950/50">
+			<div class="mihn-box flex flex-col items-start gap-3 p-5 sm:flex-row sm:items-center sm:justify-between">
 				<p class="m-0 text-sm text-zinc-600 dark:text-zinc-300">Join the conversation — sign in to leave a comment.</p>
 				<a
 					href={`${API_BASE}/api/auth/github/start`}
@@ -36,7 +36,7 @@ const { postSlug } = Astro.props;
 		</div>
 
 		<!-- Comment form - visible when logged in -->
-		<form id="comment-form" class="hidden space-y-3 rounded-2xl border border-zinc-200/80 bg-white/65 p-5 backdrop-blur-sm dark:border-zinc-800/80 dark:bg-zinc-950/45">
+		<form id="comment-form" class="mihn-box hidden space-y-3 p-5">
 			<div id="reply-to-indicator" class="hidden [&:not(.hidden)]:flex items-center gap-2 rounded-lg border border-[rgba(180,126,36,0.3)] bg-[rgba(180,126,36,0.07)] px-3 py-1.5 text-sm text-zinc-600 dark:border-[rgba(226,190,110,0.3)] dark:bg-[rgba(226,190,110,0.09)] dark:text-zinc-300">
 				<svg viewBox="0 0 20 20" class="h-3.5 w-3.5 text-[rgb(180,126,36)] dark:text-[rgb(226,190,110)]" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M9 4 4 9l5 5M4 9h8a4 4 0 0 1 4 4v3" stroke-linecap="round" stroke-linejoin="round" /></svg>
 				Replying to <span id="reply-to-name" class="font-semibold text-zinc-800 dark:text-zinc-100"></span>
@@ -181,7 +181,7 @@ const { postSlug } = Astro.props;
 
 		if (!comments || comments.length === 0) {
 			container.innerHTML = `
-				<div class="flex flex-col items-center justify-center gap-2 rounded-2xl border border-dashed border-zinc-200 py-10 text-center dark:border-zinc-800">
+				<div class="mihn-box flex flex-col items-center justify-center gap-2 px-5 py-10 text-center">
 					<svg viewBox="0 0 24 24" class="h-8 w-8 text-zinc-300 dark:text-zinc-600" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke-linecap="round" stroke-linejoin="round"/></svg>
 					<p class="m-0 text-sm text-zinc-500 dark:text-zinc-400">No comments yet — be the first to share a thought.</p>
 				</div>`;
@@ -191,7 +191,7 @@ const { postSlug } = Astro.props;
 		container.innerHTML = comments
 			.map(
 				(c) =>
-					`<div class="card-spotlight group relative rounded-2xl border border-zinc-200/70 bg-white/55 p-4 transition-colors duration-200 hover:border-zinc-300/80 dark:border-zinc-800/70 dark:bg-zinc-950/40 dark:hover:border-zinc-700/80">${renderComment(c)}</div>`
+					`<div class="mihn-box card-spotlight group relative p-4">${renderComment(c)}</div>`
 			)
 			.join('');
 		attachReplyHandlers();

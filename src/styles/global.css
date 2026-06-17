@@ -2542,6 +2542,24 @@ body::after {
 	color: #111 !important;
 }
 
+.mihn-box {
+	border: 3px solid var(--mihn-line) !important;
+	border-radius: var(--mihn-box-radius) !important;
+	background:
+		linear-gradient(135deg, color-mix(in srgb, var(--mihn-card) 90%, white 10%), color-mix(in srgb, var(--mihn-yellow) 10%, var(--mihn-card) 90%)),
+		var(--mihn-card) !important;
+	box-shadow: var(--mihn-shadow) !important;
+}
+
+.mihn-box-interactive {
+	transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+}
+
+.mihn-box-interactive:hover {
+	transform: translate(-3px, -3px) !important;
+	box-shadow: 12px 12px 0 var(--mihn-line) !important;
+}
+
 .card-surface {
 	position: relative;
 	overflow: hidden;
